@@ -3,16 +3,26 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+//import { MatToolbarModule} from "@angular/material/toolbar";
+import { CommonModule } from "@angular/common";
+import { CCSSBModule } from "./ccssb/ccssb.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    //MatToolbarModule,
+    CCSSBModule
+  ],
+  exports:[
+  //CCSSBModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  //entryComponents:[AppComponent,]
 })
 export class AppModule { }

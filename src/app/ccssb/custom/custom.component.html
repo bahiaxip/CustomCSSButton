@@ -1,0 +1,306 @@
+<div class="row justify-content-center">
+  <div class="col-auto fondo_negro title_rounded pt-3 m_auto titulo">
+    <p class="">{{title}}</p>
+  </div>
+</div>
+
+<div class="centrado ">
+  <div class="row mt-3 pt-2">
+    <div class="col-12 col-md-7">
+      <div class="row justify-content-center">
+        <!--<div class="col-6 ">
+          <mat-form-field class=" pl-2 pr-2 title_rounded">
+            <mat-label>Tamaño</mat-label>
+            <mat-select >
+              <mat-option value="mini">Mini</mat-option>
+              <mat-option value="mini">Medium</mat-option>
+              <mat-option>Maxi</mat-option>
+              <mat-option>MaxiXL</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p class="text-white">opciones avanzadas...</p>
+
+        </div>-->
+        <div class="col-12 col-xl-12">
+          <mat-grid-list class="" cols="1" >
+            <mat-list>
+              <mat-form-field class="fondo_blanco p-2 mt-1 c_verde" >
+                <input matInput [placeholder]="mssgeName" [(ngModel)]="className" required name="clasName" (focus)="changeLabelName()">
+                <mat-label *ngIf="mssgeNameRequired==true"  class="text-danger bold">Introduzca un nombre</mat-label>
+              </mat-form-field>
+
+              <mat-form-field class="p-2 fondo_blanco mt-1" >
+                <mat-label>Tipo</mat-label>
+                <mat-select [(ngModel)]="Selected.polygon" (selectionChange)="setSize()">
+                  <mat-option value="rectangle" >Rectangular</mat-option>
+                  <mat-option value="circle">Circular</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-list>
+
+            <mat-list class="pt-0">
+
+              <mat-form-field class="p-2 fondo_blanco" >
+                <mat-label>Tamaño</mat-label>
+                <mat-select [(ngModel)]="Selected.size" (selectionChange)="setSize()">
+                  <mat-option value="mini">Mini</mat-option>
+                  <mat-option value="medium">Medium</mat-option>
+                  <mat-option value="max">Maxi</mat-option>
+                  <mat-option value="xl">MaxiXL</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="fondo_blanco p-2">
+                <input matInput placeholder="Editar Texto" [(ngModel)]="texto"  (focus)="changeLabelName()">
+              </mat-form-field>
+
+              <mat-list-item class="mt-2">
+                <mat-button-toggle-group class="border-0 fondo_negro m_auto" [(ngModel)]="buttonToggleGroup">
+                  <mat-button-toggle [matTooltip]="buttonToggleGroup=='background' ?  'Color de fondo activado' :'Activar color de fondo'" class=""  value="background" matTooltipClass="mat_tooltip2"><mat-icon>format_paint</mat-icon></mat-button-toggle>
+
+                  <mat-button-toggle [matTooltip]="buttonToggleGroup=='font' ?  'Color de fuente activado' :'Activar color de fuente'" class="" value="font" matTooltipClass="mat_tooltip2"><mat-icon>colorize</mat-icon></mat-button-toggle>
+
+
+                  <mat-button-toggle [matTooltip]="buttonToggleGroup=='shadow' ?  'Color de sombra activado' :'Activar color de sombra'" class="" value="shadow" matTooltipClass="mat_tooltip2" ><mat-icon>border_style</mat-icon></mat-button-toggle>
+                  <mat-button-toggle [matTooltip]="buttonToggleGroup=='reset' ?  'Desactivado' :'Desactivar'" class="" value="reset" selected matTooltipClass="mat_tooltip2"><mat-icon>format_color_reset</mat-icon></mat-button-toggle>
+                </mat-button-toggle-group>
+              </mat-list-item>
+
+            </mat-list>
+
+            <mat-list class=" m_auto mt-2" style="">
+              <mat-list-item class=" m_auto "
+               style="">
+               <!--<div class="m_auto fondo_negro title_rounded" style="padding:30px;">-->
+                <div class="m_auto" style="">
+                  <button class="ccssb negro ccssb-custom m_auto " [ngStyle]="{'width':sizeW,'height':sizeH,'font-size':fontSize+'px','background-color':Button.background,'color':Button.color,'box-shadow':Button.shadow,'font-weight':Selected.format,'transition':'all '+Selected.timeTrans+'s linear','cursor':Selected.cursor,'border-radius':Button.borderRadius,'overflow':'hidden'}" (mousedown)="keyp($event)"  (mouseup)="keyp($event)" >
+                      {{texto}}
+                    </button>
+                </div>
+              </mat-list-item>
+
+              <mat-list-item class="mt-3">
+                <div class="m_auto fondo_negro title_rounded mt-1" style="">
+                <button mat-icon-button class="m_auto" (click)="getCSS()">
+                    <mat-icon style="background-color:white">visibility</mat-icon>
+                  </button>
+                </div>
+              </mat-list-item>
+            </mat-list>
+          </mat-grid-list>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mt-2">
+        <div class="col-10 col-sm-8 col-md-10 col-lg-8 col-xl-10">
+          <mat-accordion>
+        <mat-expansion-panel  >
+          <mat-expansion-panel-header>
+            Opciones avanzadas
+          </mat-expansion-panel-header>
+          <p class="text-danger" mat-line *ngIf="errorColor||errorShadow">
+            El color debe ser un código hexadecimal válido
+          </p>
+          <mat-grid-list  cols="2" rowHeight="135px">
+
+            <mat-grid-tile class="slider_formato">
+              <mat-list  class="mt-2">
+                <mat-list-item>
+                  <mat-label matTooltip="Tamaño de fuente (px)" matTooltipClass="mat_tooltip"><mat-icon class="size_mat_icon" >format_size</mat-icon></mat-label>
+                </mat-list-item>
+
+                <mat-list-item>
+                  <mat-slide-toggle [checked]="Checked.fontSize" (change)="changeSlice($event.checked,'fontSize')" class="text-info">Fuente</mat-slide-toggle>
+                </mat-list-item>
+
+                <mat-list-item>
+                  <mat-form-field *ngIf="Checked.fontSize" >
+                    <mat-label>Opciones</mat-label>
+                    <mat-select [(ngModel)]="Selected.font" (selectionChange)="updateFontSize()">
+                      <mat-option value="10">10</mat-option>
+                      <mat-option value="11">11</mat-option>
+                      <mat-option value="12">12</mat-option>
+                      <mat-option value="13">13</mat-option>
+                      <mat-option value="14">14</mat-option>
+                      <mat-option value="15">15</mat-option>
+                      <mat-option value="16">16</mat-option>
+                      <mat-option value="17">17</mat-option>
+                      <mat-option value="18">18</mat-option>
+                      <mat-option value="19">19</mat-option>
+                      <mat-option value="20">20</mat-option>
+                      <mat-option value="21">21</mat-option>
+                      <mat-option value="22">22</mat-option>
+                      <mat-option value="23">23</mat-option>
+                      <mat-option value="24">24</mat-option>
+                      <mat-option value="25">25</mat-option>
+                      <mat-option value="26">26</mat-option>
+                      <mat-option value="27">27</mat-option>
+                      <mat-option value="28">28</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-list-item>
+              </mat-list>
+            </mat-grid-tile>
+
+            <mat-grid-tile class="slider_formato">
+              <mat-list class="mt-2">
+                <mat-list-item>
+                  <mat-label matTooltip="Tiempo de animación (segundos)" matTooltipClass="mat_tooltip"><mat-icon class="size_mat_icon">timer</mat-icon></mat-label>
+                </mat-list-item>
+                <mat-list-item class="">
+                  <mat-slide-toggle [checked]="Checked.timeTrans" (change)="changeSlice($event.checked,'timeTrans')" class="text-info">Tiempo</mat-slide-toggle>
+                </mat-list-item>
+                <mat-list-item class="">
+                  <mat-form-field *ngIf="Checked.timeTrans" >
+                    <mat-label>Opciones</mat-label>
+                    <mat-select [(ngModel)]="Selected.timeTrans" (selectionChange)="updateTimeTransSelected()">
+                      <mat-option value="0.01">0.01</mat-option>
+                      <mat-option value="0.05">0.05</mat-option>
+                      <mat-option value="0.1">0.1</mat-option>
+                      <mat-option value="0.2">0.2</mat-option>
+                      <mat-option value="0.3">0.3</mat-option>
+                      <mat-option value="0.4">0.4</mat-option>
+                      <mat-option value="0.5">0.5</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-list-item>
+              </mat-list>
+            </mat-grid-tile>
+
+          </mat-grid-list>
+          <mat-grid-list cols="2" rowHeight="120px">
+
+            <mat-grid-tile class="slider_formato">
+              <mat-list class="">
+                <mat-list-item>
+                  <mat-label [matTooltip]="this.Selected.format=='bold' ?  'Tipografía Negrita activada' :'Tipografía Negrita desactivada'" matTooltipClass="mat_tooltip"><mat-icon class="size_mat-icon">format_bold</mat-icon></mat-label>
+                </mat-list-item>
+                <mat-list-item>
+                  <mat-slide-toggle [checked]="Checked.format" (change)="changeSlice($event.checked,'format')" class="text-info">Negrita</mat-slide-toggle>
+                </mat-list-item>
+                <mat-list-item  >
+                  <!--<mat-form-field *ngIf="Checked.format">
+                    <mat-label>Opciones</mat-label>
+                    <mat-select [(ngModel)]="Selected.format">
+                      <mat-option value="default">Default</mat-option>
+                      <mat-option value="pointer">Pointer</mat-option>
+                      <mat-option value="progress">Progress</mat-option>
+                      <mat-option value="wait">Wait</mat-option>
+                      <mat-option value="help">Help</mat-option>
+                    </mat-select>
+                  </mat-form-field>-->
+                </mat-list-item>
+              </mat-list>
+            </mat-grid-tile>
+
+            <mat-grid-tile class="slider_formato">
+              <mat-list class="">
+                <mat-list-item>
+                  <mat-label matTooltip="Seleccionar puntero" matTooltipClass="mat_tooltip" ><mat-icon  class="size_mat_icon">mouse</mat-icon></mat-label>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-slide-toggle [checked]="Checked.cursor" (change)="changeSlice($event.checked,'cursor')" class="text-info">Cursor</mat-slide-toggle>
+                </mat-list-item>
+                <mat-list-item  >
+                  <mat-form-field *ngIf="Checked.cursor">
+                    <mat-label>Opciones</mat-label>
+                    <mat-select [(ngModel)]="Selected.cursor">
+                      <mat-option value="pointer">Pointer</mat-option>
+                      <mat-option value="default">Default</mat-option>
+                      <mat-option value="copy">Copy</mat-option>
+                      <mat-option value="text">Text</mat-option>
+                      <mat-option value="progress">Progress</mat-option>
+                      <mat-option value="wait">Wait</mat-option>
+                      <mat-option value="help">Help</mat-option>
+                      <mat-option value="not-allowed">Not Allowed</mat-option>
+                      <mat-option value="none">None</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-list-item>
+              </mat-list>
+            </mat-grid-tile>
+
+          </mat-grid-list>
+          <mat-grid-list cols="2" rowHeight="120px">
+
+            <mat-grid-tile class="slider_formato">
+              <mat-list>
+                <mat-list-item>
+                <mat-label><mat-icon matTooltip="Color de fuente (botón pulsado)" matTooltipClass="mat_tooltip">colorize</mat-icon></mat-label>
+              </mat-list-item>
+                <mat-list-item>
+                  <mat-slide-toggle [checked]="Checked.colorActive" (change)="changeSlice($event.checked,'colorActive')" class="text-info">Color</mat-slide-toggle>
+                </mat-list-item>
+                <mat-list-item >
+                  <mat-form-field *ngIf="Checked.colorActive">
+                  <input matInput placeholder="Color hexadecimal" [(ngModel)]="Button.colorActive">
+                  </mat-form-field>
+                </mat-list-item>
+              </mat-list>
+            </mat-grid-tile>
+
+            <mat-grid-tile class="slider_formato">
+                <mat-list>
+                  <mat-list-item>
+                  <mat-label><mat-icon matTooltip="Color de sombra (botón pulsado)" matTooltipClass="mat_tooltip">border_style</mat-icon></mat-label>
+                </mat-list-item>
+                  <mat-list-item>
+                    <mat-slide-toggle [checked]="Checked.shadowActive" (change)="changeSlice($event.checked,'shadowActive')" class="text-info">Sombra</mat-slide-toggle>
+                  </mat-list-item>
+                  <mat-list-item >
+                    <mat-form-field *ngIf="Checked.shadowActive">
+                    <input matInput placeholder="Color hexadecimal" [(ngModel)]="Button.shadowActive">
+                    </mat-form-field>
+                  </mat-list-item>
+                </mat-list>
+              </mat-grid-tile>
+
+          </mat-grid-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+
+    </div>
+    <div class="col-12 col-md-5 paleta mt-3 ">
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-4 col-md-6 col-lg-5 col-xl-7 d-flex panel_color_selected" [ngStyle]="{'background-color':colorCss}">
+      <div class="row align-items-center m_auto">
+        <div class="col ">
+          <input type="text" readonly="readonly" [(ngModel)]="colorCss" >
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- range -->
+      <div class="row justify-content-center mt-3 ">
+        <div class="col-7 col-md-10 col-lg-9 col-xl-12 ">
+          <div class="row  ">
+            <div class="range d-flex ">
+              <label class="labelr">R</label>
+              <div class="col">
+                <input type="range" id="r" min="0" max="255" step="1" [(ngModel)]="rangeR" (input)="set()" [ngStyle]="{'background':linearGradient[0]}">
+              </div>
+              <input class="labelr" #inputRID="ngModel" id="inputR" type="text" readonly="readonly" [(ngModel)]="inputR" >
+            </div>
+            <div class="range d-flex">
+              <label class="labelg">G</label>
+              <div class="col">
+                <input type="range" id="g" min="0" max="255" step="1" [(ngModel)]="rangeG" (input)="set()" [ngStyle]="{'background':linearGradient[1]}">
+              </div>
+              <input class="labelg" id="inputG" type="text" readonly="readonly" [(ngModel)]="inputG">
+            </div>
+            <div class="range d-flex">
+              <label class="labelb">B</label>
+              <div class="col">
+                <input type="range" id="b" min="0" max="255" step="1" [(ngModel)]="rangeB" (input)="set()" [ngStyle]="{'background':linearGradient[2]}">
+              </div>
+              <input class="labelb" id="inputB" type="text" readonly="readonly" [(ngModel)]="inputB">
+            </div>
+          </div>
+          <button class="ccssb-max btn_seleccionar" style="" (click)="paint()">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

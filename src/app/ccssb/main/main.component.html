@@ -1,0 +1,71 @@
+
+<mat-toolbar>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-2 ">
+        <button mat-mini-fab routerLink="predefined" matTooltip="Botones predefinidos" class="icon_router" matTooltipClass="mat_tooltip2"><mat-icon >keyboard_arrow_left</mat-icon></button>
+        &nbsp;
+        <button mat-mini-fab routerLink="custom" matTooltip="Botones personalizados" class="icon_router" matTooltipClass="mat_tooltip2"><mat-icon>keyboard_arrow_right</mat-icon></button>
+    </div>
+
+    <div class="col-8 m_auto fondo_blanco fam-CgBernhardtBd d-flex">
+      <a class="m_auto"  [routerLink]="['/ccsb-panel']">CustomCSSButton</a>
+    </div>
+
+    <div class="col-2">
+      <button mat-mini-fab class="icon_router d-xl-none" style="float:right" (click)="openBottomSheet()">
+        <mat-icon>description</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+</mat-toolbar>
+
+<div class="container-fluid panel_temp" [ngStyle]="{'opacity':panelTemp,'z-index':zIndex}">
+    <div class="row justify-content-center">
+        <div class="info_temporal">
+            <div class=" text-center">
+                <p>El código ha sido copiado al portapapeles</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row mt-3">
+
+    <div class="col-2 d-none d-xl-block ">
+      <div class=" fondo_negro m-2 text-white p-3 title_rounded ">
+        <h6 class="centrado ">CustomCSSButton</h6>
+        <p class="al_justify mt-3">CustomCSSButton es una aplicación práctica y sencilla que permite, mediante una interfaz gráfica, generar el código HTML y CSS de un botón personalizado.<br>
+        CustomCSSButton incorpora una paleta interactiva y un botón de previsualización, obteniendo como resultado la edición y visualización de un botón animado con estilo propio en solo unos segundos.</p>
+      </div>
+    </div>
+
+    <div class="col-12 col-xl-8">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="col-2 d-none d-xl-block ">
+      <div class=" fondo_negro m-2 text-white p-1 title_rounded" *ngIf="text && text=='PredefinedComponent'">
+        <p class="text-center pt-2 bold">Predefinidos</p>
+        <p class="al_justify ml-2 mr-2">
+          CustomCSSButton ofrece un conjunto de botones predefinidos de tamaño intermedio, compatible en distintas resoluciones con una animación incorporada por defecto ofreciendo un tipo de botón con un estilo realista y original.</p>
+      </div>
+
+      <div class=" fondo_negro m-2 text-white p-1 title_rounded" *ngIf="text && text=='CustomComponent'">
+        <p class="text-center pt-2 bold">Personalizar</p>
+        <ol class="">
+          <li>Introducir nombre</li>
+          <li>Seleccionar tipo</li>
+          <li>Seleccionar tamaño</li>
+          <li>Introducir texto</li>
+          <li>Activar zona a pintar (fondo, texto, sombra)</li>
+          <li>Seleccionar el color mediante la paleta interactiva pulsando OK</li>
+          <li>Accionar icono de visibilidad (icono en forma de ojo)</li>
+        </ol>
+        <p class="al_justify mt-3">
+        </p>
+      </div>
+    </div>
+  </div>

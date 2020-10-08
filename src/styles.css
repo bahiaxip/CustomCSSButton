@@ -1,1 +1,164 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*@import "~@angular/material/prebuilt-themes/indigo-pink.css";*/
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+/*@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";*/
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+        background-image:url("assets/img/fondo_azul.jpg");
+
+}
+/*anulado*/
+/*
+.global{
+  width:100%;
+  height:100%;
+  background-color:rgba(0,0,0,0);
+}
+*/
+
+/*  propiedades comunes de botón    */
+.ccssb{
+font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+padding:2px 8px 4px 8px;
+border:none;border-radius:5px;
+font-weight:bold;
+width:80px;height:30px;
+transition:all 0.1s linear;
+position:relative;bottom:0;
+outline:none !important;
+display:inline;
+cursor:pointer;
+text-align:center;
+font-size:15px;
+}
+.ccssb-mini{
+font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+padding:2px 8px 4px 8px;
+border:none;border-radius:5px;
+font-weight:bold;
+width:60px;height:25px;
+transition:all 0.1s linear;
+position:relative;bottom:0;
+outline:none;
+display:inline;
+cursor:pointer;
+text-align:center;
+font-size:13px;
+}
+.ccssb-max{
+font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+padding:2px 8px 4px 8px;
+border:none;border-radius:5px;
+font-weight:bold;
+width:100px;height:40px;
+transition:all 0.1s linear;
+position:relative;bottom:0;
+outline:none;
+display:inline;
+cursor:pointer;
+text-align:center;
+font-size:17px;
+overflow:hidden;
+margin:auto;
+}
+.ccssb-xl{
+font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+padding:2px 8px 4px 8px;
+border:none;border-radius:5px;
+font-weight:bold;
+width:120px;height:50px;
+transition:all 0.1s linear;
+position:relative;bottom:0;
+outline:none;
+display:inline;
+cursor:pointer;
+text-align:center;
+font-size:19px;
+}
+.ccssb:active,.ccssb-mini:active,.ccssb-max:active,.ccssb-xl:active{
+bottom:-3px;
+}
+
+/*
+.boton{
+font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+padding:2px 8px 4px 8px;
+border:none;border-radius:5px;
+font-weight:bold;font-size:15px;
+width:80px;height:30px;
+transition:all 0.1s linear;
+position:relative;bottom:0;
+outline:none;
+display:inline;
+cursor:pointer;
+text-align:center
+}
+.boton:hover{}
+.boton:active{bottom:-3px;}
+
+
+*/
+/* propiedades de los botones predefinidos  */
+
+/*  botón estándar */
+.normal
+{
+box-shadow:0 3px 0 #696969, 2px 2px 2px #FFF inset, -2px -2px 2px #FFF inset;
+background-color:#BEBEBE;
+color:#000;
+outline:none;
+}
+
+.normal:active
+{
+box-shadow:0 0 0 #696969,1px 1px 1px #828282 inset,-1px -1px 1px #828282 inset;
+border:none;outline:none;
+}
+/*  botón negro */
+.negro{background-color:#1C1C1C;color:#FFF;box-shadow:0 3px 0 #000, 2px 2px 2px #696969 inset, -2px -2px 2px #696969 inset;}
+.negro:active{box-shadow:0 0 0 #000, 1px 1px 2px #000 inset,-1px -1px 2px #000 inset;}
+/*  botón verde */
+.verdeB{box-shadow:0 3px 0 #20766e, 2px 2px 2px #00FA9A inset, -2px -2px 2px #00FA9A inset;background-color:#20B2AA;color:#FFF}
+.verdeB:active{box-shadow:0 0 0 #20766e, 1px 1px 2px #20766e inset,-1px -1px 2px #20766e inset}
+/*  botón azul */
+.azulB{box-shadow:0 3px 0 #436EEE, 2px 2px 2px #00FFFF inset, -2px -2px 2px #00FFFF inset;background-color:#1E90FF;color:#FFF}
+.azulB:active{box-shadow:0 0 0 #4682B4, 1px 1px 2px #436EEE inset,-1px -1px 2px #436EEE inset}
+/*  botón rojo */
+.rojo{box-shadow:0 3px 0 #eb0000, 2px 2px 2px #ff7e80 inset, -2px -2px 2px #ff7e80 inset;background-color:#ff0000;color:#FFF}
+.rojo:active{box-shadow:0 0 0 #eb0000, 1px 1px 2px #eb0000 inset,-1px -1px 2px #eb0000 inset}
+/*  botón fucsia */
+.fucsia{box-shadow:0 3px 0 #8B0A50, 2px 2px 2px #FF00FF inset, -2px -2px 2px #FF00FF inset;background-color:#ed006d;color:#FFF}
+.fucsia:active{box-shadow:0 0 0 #8B0A50, 1px 1px 2px #8B0A50 inset,-1px -1px 2px #8B0A50 inset}
+/*  botón lila */
+.lila{box-shadow:0 3px 0 #7617ce, 2px 2px 2px #9a95ff inset, -2px -2px 2px #9a95ff inset;background-color:#8A2BE2;color:#FFF}
+.lila:active{box-shadow:0 0 0 #7617ce, 1px 1px 2px #7617ce inset,-1px -1px 2px #7617ce inset}
+
+.rojoC{box-shadow:0 3px 0 #8B0000, 2px 2px 2px #FF0000 inset, -2px -2px 2px #FF0000 inset;background-color:#CD0000;color:#FFF}
+.rojoC:active{box-shadow:0 0 0 #8B0000, 1px 1px 2px #8B0000 inset,-1px -1px 2px #8B0000 inset}
+
+/*  botón verdeB */
+.verde{box-shadow:0 3px 0 #003c00, 2px 2px 2px #26b800 inset, -2px -2px 2px #26b800 inset;background-color:#005a00;color:#FFF}
+.verde:active{box-shadow:0 0 0 #003c00, 1px 1px 2px #003c00 inset,-1px -1px 2px #003c00 inset}
+/* botón azulB */
+.azul{box-shadow:0 3px 0 #1702c3, 2px 2px 2px #00a3ff inset, -2px -2px 2px #00a3ff inset;background-color:#173eff;color:#FFF}
+.azul:active{box-shadow:0 0 0 #1702c3, 1px 1px 2px #1702c3 inset,-1px -1px 2px #1702c3 inset}
+
+.rojoB{box-shadow:0 3px 0 #b00846, 2px 2px 2px #ed366d inset, -2px -2px 2px #ed366d inset;background-color:#c41c5a;color:#FFF}
+.rojoB:active{box-shadow:0 0 0 #b00846, 1px 1px 2px #b00846 inset,-1px -1px 2px #b00846 inset}
+
+.amarillo{box-shadow:0 3px 0 #eba700, 2px 2px 2px #ffff81 inset, -2px -2px 2px #ffff81 inset;background-color:#ffbb00;color:#FFF}
+.amarillo:active{box-shadow:0 0 0 #eba700, 1px 1px 2px #eba700 inset,-1px -1px 2px #eba700 inset}
+
+.naranja{box-shadow:0 3px 0 #eb3d00, 2px 2px 2px #ffb400 inset, -2px -2px 2px #ffb400 inset;background-color:#ff5100;color:#FFF}
+.naranja:active{box-shadow:0 0 0 #eb3d00, 1px 1px 2px #eb3d00 inset,-1px -1px 2px #eb3d00 inset}
+
+.marron{box-shadow:0 3px 0 #6f2700, 2px 2px 2px #ba8265 inset, -2px -2px 2px #ba8265 inset;background-color:#833b00;color:#FFF}
+.marron:active{box-shadow:0 0 0 #6f2700, 1px 1px 2px #6f2700 inset,-1px -1px 2px #6f2700 inset}
+
+.rosa{box-shadow:0 3px 0 #c33875, 2px 2px 2px #ffc7ff inset, -2px -2px 2px #ffc7ff inset;background-color:#ff74b1;color:#FFF}
+.rosa:active{box-shadow:0 0 0 #c33875, 1px 1px 2px #c33875 inset,-1px -1px 2px #c33875 inset}
+
+
+

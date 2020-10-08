@@ -1,0 +1,23 @@
+<div mat-dialog-title>
+  <button mat-button (click)="onNoClick()">Volver</button>
+  <button mat-button (click)="copyCode(textHTML)" >Copiar HTML</button>
+  <button mat-button (click)="copyCode(textCSS)" >Copiar CSS</button>
+</div>
+<mat-dialog-content>
+
+<div class="row bg-dark ">
+  <div class="col label">
+    <p>código HTML</p>
+  </div>
+</div>
+
+<textarea class="textarea" #textHTML readonly="readonly" >{{data.html}}</textarea>
+<div class="row bg-dark ">
+  <div class="col label">
+    <p>código CSS</p>
+  </div>
+</div>
+<textarea rows="32" class="textarea" #textCSS readonly="readonly" >{{data.currentCSS}}{{data.propsCSS}}</textarea>
+
+
+</mat-dialog-content>

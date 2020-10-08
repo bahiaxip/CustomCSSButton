@@ -1,0 +1,57 @@
+/*modificación select angular material anulada*/
+/* select angular material */
+
+/* panel de fondo del desplegable (options)*/
+/deep/.mat-select-panel{
+ background-color:rgba(0,0,0,.5) ;
+ border-color:white;
+}
+/* texto del select al inicio */
+/deep/ .mat-accordion .mat-form-field-label{
+  color:white !important;
+  /*background-color:rgba(0,0,0,.5)!important;*/
+  background:transparent;
+}
+
+
+/*fondo principal select*/
+/deep/.mat-accordion .mat-form-field-wrapper{
+  /*background-color:rgba(0,0,0,.3);*/
+  border-radius:4px;
+
+}
+/* option seleccionada */
+/deep/ .mat-accordion .mat-form-field-infix span{
+  color:white;
+}
+/*línea inferior del select al inicio y una vez seleccionada la opción con span*/
+/deep/ .mat-accordion .mat-form-field-underline, /deep/.mat-form-field-underline span
+{
+
+  background-color:white !important;
+}
+/*triángulito del select*/
+/deep/.mat-accordion .mat-select-arrow{
+  /*important es necesario para mientras está el foco en el select*/
+  color:white !important;
+}
+
+
+/*options del select (sin el panel de fondo)*/
+.mat-option-text{
+  background-color:rgba(0,0,0,.5);
+  /* si se coloca en la propiedad color el important machaca el .mat-option:hover*/
+  color:white ;
+}
+/*option del select seleccionada cuando despliega el menú*/
+.mat-accordion .mat-option.mat-selected {
+  color:orange !important;
+}
+.mat-accordion .mat-option:hover{
+  color:lightgreen;
+}
+
+.maticon16{
+  font-size:34px;
+  color:white;
+}

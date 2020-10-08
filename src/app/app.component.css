@@ -1,0 +1,101 @@
+/**{margin:0 auto}*/
+.toolbar{
+  height:100px;
+  text-align:center;
+
+}
+mat-toolbar {
+background-color:rgba(0,0,0,.7) ! important
+}
+mat-toolbar p{
+  font-size:30px !important;
+  margin:0 auto;
+  color:white;
+}
+
+mat-list{
+  text-align:center;
+  margin:auto;
+  display:inline-block;
+}
+
+.al_justify{
+  text-align:justify;
+  word-wrap: break-word;
+}
+
+.m_auto{
+  margin:0 auto;
+}
+
+.centrado{
+  text-align:center;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.f16{
+  font-size:20px !important;
+}
+
+.fondo_negro{
+  background-color:rgba(0,0,0,0.5);
+}
+
+.title_rounded{
+  border-radius:10px;
+}
+
+
+#boton{
+  margin:auto;
+  text-align:center;
+}
+#boton h2{
+  text-align:center;
+  color:orange;
+  margin-top:30px;
+}
+
+#boton ul
+{
+    list-style:none;
+    text-align:center;
+    margin-top:30px;
+}
+#boton button{
+  margin:0px 10px;
+}
+#boton li{
+  width:100%;
+}
+
+
+#botonera
+{
+    width:700px;height:200px;
+    padding:25px 40px 25px 0px;
+    text-align:center;
+    background-color:rgba(255,0,157,0);
+    border-radius:25px;
+}
+
+/*textarea de html y css*/
+.textarea{
+    padding:0 8px;
+    cursor:default;
+    width:100%;
+    overflow:visible;
+    height:100%;
+    border:none;
+    resize:none;
+    font-size:14px;
+}
+
+.row .label p{
+  padding-top:10px;
+  text-align:center;
+  color:#FFF;
+}

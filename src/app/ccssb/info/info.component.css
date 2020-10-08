@@ -1,0 +1,10 @@
+.fondo_negro{
+  background-color:rgba(0,0,0,0.5);
+}
+.title_rounded{
+  border-radius:10px;
+}
+.al_justify{
+  text-align:justify;
+  word-wrap: break-word;
+}

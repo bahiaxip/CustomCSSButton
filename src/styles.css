@@ -4,7 +4,8 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 /*@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";*/
 
-html, body { height: 100%; }
+
+html, body { height: 100%; zoom:97%;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
         background-image:url("assets/img/fondo_azul.jpg");
 

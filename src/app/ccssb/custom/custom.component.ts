@@ -3,10 +3,11 @@ import { CustomService } from "../services/custom.service";
 import { MatDialog, MatDialogRef,MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ActivatedRoute } from "@angular/router";
 
-export interface DialogData{
+/*export interface DialogData{
   name:string;
   user:string;
-}
+}*/
+
 @Component({
   selector: 'pre-custom',
   templateUrl: './custom.component.html',
@@ -15,7 +16,7 @@ export interface DialogData{
 
 export class CustomComponent implements OnInit {
 
-  title="Personalizar";
+  title="CustomCSS";
   //inputs paleta de colores
   inputR:string;
   inputG:string;
@@ -109,7 +110,7 @@ export class CustomComponent implements OnInit {
 
   ngOnInit() {
     //pasamos en nombre del componente actual para mostrar el texto correspondiente
-    const result=this._route.component['name'];
+    const result=this._route.snapshot.routeConfig.path;
     this._customService.success(result);
   }
 
@@ -335,9 +336,9 @@ export class CustomComponent implements OnInit {
       }
       if(this.Button.shadowActive && this.testColorHexadecimal(this.Button.shadowActive)){
         this.colorShadowTemp = this.Button.colorShadow;
-        this.Button.shadow="0 3px 0 "+this.Button.darkBackground+", 2px 2px 2px " +this.Button.shadowActive+" inset,-2px -2px 2px " +this.Button.shadowActive+" inset";
+        this.Button.shadow="0 0 0 "+this.Button.darkBackground+", 2px 2px 2px " +this.Button.shadowActive+" inset,-2px -2px 2px " +this.Button.shadowActive+" inset";
       }else{
-        this.Button.shadow="0 3px 0 "+this.Button.darkBackground+", 2px 2px 2px " +this.Button.darkBackground+" inset,-2px -2px 2px " +this.Button.darkBackground+" inset";
+        this.Button.shadow="0 0 0 "+this.Button.darkBackground+", 2px 2px 2px " +this.Button.darkBackground+" inset,-2px -2px 2px " +this.Button.darkBackground+" inset";
       }
     }else{
       //asignamos el color oscuro del box-shadow (sombra) de color negro que es el botón de muestra
@@ -374,7 +375,7 @@ export class CustomComponentDialog{
 
   constructor(
     public dialogRef: MatDialogRef<CustomComponentDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    @Inject(MAT_DIALOG_DATA) public data,
     private _customService:CustomService){
 
   }

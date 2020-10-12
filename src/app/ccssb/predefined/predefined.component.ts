@@ -15,16 +15,22 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class PredefinedComponent implements OnInit {
 
-  title= "Predefinidos";
+  title= "BaseCSS";
   currentButton=[];
   propsButton:string;
   buttonHTML:string;
+  result:any;
 
   constructor(public dialog: MatDialog, private _customService:CustomService, private _route:ActivatedRoute) { }
 
   ngOnInit() {
     //pasamos en nombre del componente para mostrar el texto correspondiente
-    const result = this._route.component['name'];
+      //component.name  da error al generar el comando ng build --prod
+      //const result = this._route.component.name;
+      //component['name'] permite el comando ng build --prod pero no funciona
+      //const result = this._route.component['name'];
+      //finalmente routeConfig.path
+    const result = this._route.snapshot.routeConfig.path;
     this._customService.success(result);
   }
 

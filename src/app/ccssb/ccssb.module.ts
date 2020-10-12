@@ -25,12 +25,11 @@ import { MatInputModule } from "@angular/material/input";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { MatTabsModule } from "@angular/material/tabs";
-import { InfoComponent } from './info/info.component';
 //import { MatInputModule } from "@angular/material/input";
 
 
 @NgModule({
-  declarations: [PredefinedComponent,PredefinedComponentDialog, CustomComponent, MainComponent,CustomComponentDialog,MainComponentDialog, InfoComponent],
+  declarations: [PredefinedComponent,PredefinedComponentDialog, CustomComponent, MainComponent,CustomComponentDialog,MainComponentDialog],
   imports: [
     CommonModule,
     MatToolbarModule,
